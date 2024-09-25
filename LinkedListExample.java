@@ -1,28 +1,60 @@
 import java.util.LinkedList;
 
 public class LinkedListExample {
-    @SuppressWarnings("removal")
     public static void main(String[] args) {
         LinkedList<Integer> linkedList = new LinkedList<>();
 
-        // Insertion
-        long startTime = System.nanoTime();
+        // Fill LinkedList with values
         for (int i = 0; i < 1000000; i++) {
             linkedList.add(i);
         }
-        long endTime = System.nanoTime();
-        System.out.println("LinkedList Insertion Time: " + (endTime - startTime) + " ns");
 
-        // Search
+        // Read by Index
+        long startTime = System.nanoTime();
+        int value = linkedList.get(500000);
+        long endTime = System.nanoTime();
+        System.out.println("LinkedList Read by Index Time: " + (endTime - startTime) + " ns");
+
+        // Read by Value
         startTime = System.nanoTime();
         linkedList.contains(999999);
         endTime = System.nanoTime();
-        System.out.println("LinkedList Search Time: " + (endTime - startTime) + " ns");
+        System.out.println("LinkedList Read by Value Time: " + (endTime - startTime) + " ns");
 
-        // Deletion
+        // Insert at Head
         startTime = System.nanoTime();
-        linkedList.remove(new Integer(999999));
+        linkedList.addFirst(-1);
         endTime = System.nanoTime();
-        System.out.println("LinkedList Deletion Time: " + (endTime - startTime) + " ns");
+        System.out.println("LinkedList Insert at Head Time: " + (endTime - startTime) + " ns");
+
+        // Insert in Mid
+        startTime = System.nanoTime();
+        linkedList.add(500000, -1);
+        endTime = System.nanoTime();
+        System.out.println("LinkedList Insert in Mid Time: " + (endTime - startTime) + " ns");
+
+        // Insert at Tail
+        startTime = System.nanoTime();
+        linkedList.addLast(-1);
+        endTime = System.nanoTime();
+        System.out.println("LinkedList Insert at Tail Time: " + (endTime - startTime) + " ns");
+
+        // Delete from Head
+        startTime = System.nanoTime();
+        linkedList.removeFirst();
+        endTime = System.nanoTime();
+        System.out.println("LinkedList Delete from Head Time: " + (endTime - startTime) + " ns");
+
+        // Delete from Mid
+        startTime = System.nanoTime();
+        linkedList.remove(500000);
+        endTime = System.nanoTime();
+        System.out.println("LinkedList Delete from Mid Time: " + (endTime - startTime) + " ns");
+
+        // Delete from Tail
+        startTime = System.nanoTime();
+        linkedList.removeLast();
+        endTime = System.nanoTime();
+        System.out.println("LinkedList Delete from Tail Time: " + (endTime - startTime) + " ns");
     }
 }
